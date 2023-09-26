@@ -145,6 +145,7 @@ function BannerBackground() {
         width: '100%',
         height: 'auto',
       }}
+      className='mb-14 lg:mb-0'
     />
   );
 }

@@ -18,9 +18,9 @@ function SubjectItem({ subject }: { subject: Subject }) {
 
 export default function SubjectsLayout({ subjects }: SubjectsLayoutProps) {
   return (
-    <div className='overflow-hidden lg:ml-10 lg:w-1/4 lg:rounded-2xl lg:border-2 lg:bg-white'>
+    <div className='overflow-hidden lg:ml-10 lg:rounded-2xl lg:border-2 lg:bg-white'>
       <div className='border-b-2 p-5 text-[#2B2D54] lg:bg-[#2B2D54] lg:text-white'>
-        <h1 className='text-4xl font-extrabold'>Materias</h1>
+        <h1 className='w-max text-4xl font-extrabold'>Materias</h1>
       </div>
       <div className='h-fit'>
         {subjects.map((subject) => (
