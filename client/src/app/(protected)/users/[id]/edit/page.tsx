@@ -8,7 +8,7 @@ export default async function ConfigProfile() {
   const session = await getServerSession(authOptions);
   const user = await ApiCommunicator.getUser(session!.user.id!);
   // const subjects = await ApiCommunicator.getSubjects();
-  const careers = await ApiCommunicator.getCareers();
+  // const careers = await ApiCommunicator.getCareers();
   const careersByUser = await ApiCommunicator.getCareersByUser(user.id);
   const subjectsByUser = await SubjectService.getByUser(user);
   return (
@@ -24,7 +24,7 @@ export default async function ConfigProfile() {
             <FormPersonalInfo
               user={user}
               // subjects={subjects}
-              careers={careers}
+              // careers={careers}
               careersByUser={careersByUser}
               subjectsByUser={subjectsByUser}
             />
