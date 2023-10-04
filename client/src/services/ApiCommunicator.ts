@@ -158,6 +158,14 @@ export class ApiCommunicator {
     });
   }
 
+  static async clientSidegetCareers(): Promise<any> {
+    return await this.commonFetch({
+      url: '/careers',
+      mustBeAuthenticated: true,
+      method: 'GET',
+    });
+  }
+
   static async signUp(data: any): Promise<any> {
     return await this.commonFetch({
       url: this.apiUrl() + '/users/signup',

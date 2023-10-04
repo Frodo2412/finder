@@ -39,6 +39,7 @@ type FormPersonalInfoProps = {
 
 export default function FormPersonalInfo({
   user,
+  // eslint-disable-next-line no-unused-vars
   careers = [],
   careersByUser = [],
   subjects = [],
@@ -74,6 +75,7 @@ export default function FormPersonalInfo({
   const [alertType, setAlertType] = useState<alertTypes>('error');
   const [disabledSubmittButton, setDisabledSubmittButton] =
     useState<boolean>(true);
+  const [careerAux, setCareerAux] = useState<Career[]>([]);
 
   useEffect(() => {
     const changedSocialNetworks = () => {
@@ -189,6 +191,14 @@ export default function FormPersonalInfo({
     }
   };
 
+  useEffect(() => {
+    const TestingFunction = async () => {
+      const careersAux = await ApiCommunicator.clientSidegetCareers();
+      setCareerAux(careersAux);
+    };
+    TestingFunction();
+  }, []);
+
   return (
     <div className='mt-3 sm:w-full'>
       <p className='mb-4 pl-7 pr-7 text-2xl text-black md:px-0'>
@@ -249,15 +259,17 @@ export default function FormPersonalInfo({
             maxWidth={false}
           />
           {/* Careers and subject sections */}
-          <DynamicAutoCompletes
-            title='Carreras'
-            placeholder='Elije una carrera'
-            options={parseCareerToOption(careers)}
-            onChangeActualOptions={handleChangeCareers}
-            defaultOptions={parseCareerToOption(careersByUser)}
-            buttonIds='career_button_'
-            dropDownIds='career_dropdown_'
-          />
+          {careerAux.length != 0 && (
+            <DynamicAutoCompletes
+              title='Carreras'
+              placeholder='Elije una carrera'
+              options={parseCareerToOption(careerAux)}
+              onChangeActualOptions={handleChangeCareers}
+              defaultOptions={parseCareerToOption(careersByUser)}
+              buttonIds='career_button_'
+              dropDownIds='career_dropdown_'
+            />
+          )}
           <DynamicAutoCompletes
             title='Materias'
             placeholder='Elije una materia'
