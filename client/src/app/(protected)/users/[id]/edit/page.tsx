@@ -6,8 +6,8 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/auth';
 export default async function ConfigProfile() {
   const session = await getServerSession(authOptions);
   const user = await ApiCommunicator.getUser(session!.user.id!);
-  // const subjects = await ApiCommunicator.getSubjects();
-  const careers = await ApiCommunicator.getCareers();
+  const subjects = await ApiCommunicator.getSubjects();
+  // const careers = await ApiCommunicator.getCareers();
   // const careersByUser = await ApiCommunicator.getCareersByUser(user.id);
   // const subjectsByUser = await SubjectService.getByUser(user);
   return (
@@ -22,8 +22,8 @@ export default async function ConfigProfile() {
           {user && (
             <FormPersonalInfo
               user={user}
-              // subjects={subjects}
-              careers={careers}
+              subjects={subjects}
+              // careers={careers}
               // careersByUser={careersByUser}
               // subjectsByUser={subjectsByUser}
             />
